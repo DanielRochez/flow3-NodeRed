@@ -1,0 +1,112 @@
+[
+    {
+        "id": "17ff7e9b1c1da973",
+        "type": "tab",
+        "label": "Flow 3",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "509e49e7269c4947",
+        "type": "inject",
+        "z": "17ff7e9b1c1da973",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "1",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 110,
+        "y": 120,
+        "wires": [
+            [
+                "fca909641aaa9d44"
+            ]
+        ]
+    },
+    {
+        "id": "58c0e4d5133af220",
+        "type": "debug",
+        "z": "17ff7e9b1c1da973",
+        "name": "debug 1",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 540,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "fca909641aaa9d44",
+        "type": "function",
+        "z": "17ff7e9b1c1da973",
+        "name": "function 1",
+        "func": "// Lo que está después de “//” son comentarios\n// Crea un objeto Date a partir del payload enviado por timestamp\nvar date = new Date(msg.payload);\n// Cambia el payload para que sea una fecha con formato\nmsg.payload = date.toString();\n// Regresa el mensaje para que se envíe al sigueinte nodo\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 340,
+        "y": 120,
+        "wires": [
+            [
+                "58c0e4d5133af220",
+                "e2d5d1d3c59dd4ea"
+            ]
+        ]
+    },
+    {
+        "id": "e2d5d1d3c59dd4ea",
+        "type": "ui_text",
+        "z": "17ff7e9b1c1da973",
+        "group": "4e65129376c12ef1",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Time Stamp Interpretado",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "className": "",
+        "x": 650,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "4e65129376c12ef1",
+        "type": "ui_group",
+        "name": "Fecha",
+        "tab": "ebf002098eedc180",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "ebf002098eedc180",
+        "type": "ui_tab",
+        "name": "flow 3",
+        "icon": "dashboard",
+        "order": 1,
+        "disabled": false,
+        "hidden": false
+    }
+]
